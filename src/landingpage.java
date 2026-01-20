@@ -63,7 +63,7 @@ public class landingpage extends javax.swing.JFrame {
         nav.setBackground(new java.awt.Color(250, 127, 87));
         nav.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        login.setBackground(new java.awt.Color(204, 51, 0));
+        login.setBackground(new java.awt.Color(18, 51, 117));
         login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginMouseClicked(evt);
@@ -78,14 +78,14 @@ public class landingpage extends javax.swing.JFrame {
         login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LOGIN");
         login.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 200, 40));
 
         nav.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 84, 210, 50));
 
-        register.setBackground(new java.awt.Color(204, 51, 0));
+        register.setBackground(new java.awt.Color(18, 51, 117));
         register.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerMouseClicked(evt);
@@ -101,7 +101,7 @@ public class landingpage extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("REGISTER");
         register.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 50));
@@ -157,11 +157,11 @@ public class landingpage extends javax.swing.JFrame {
     }//GEN-LAST:event_registerMouseEntered
 
     private void loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseExited
-        login.setBackground(new Color(255,51,0));
+        login.setBackground(new Color(18,51,117));
     }//GEN-LAST:event_loginMouseExited
 
     private void registerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseExited
-       register.setBackground(new Color(255,51,0));
+       register.setBackground(new Color(18,51,117));
     }//GEN-LAST:event_registerMouseExited
 
     /**

@@ -5,7 +5,9 @@
  */
 package internalPages;
 
+import config.config;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -39,13 +41,13 @@ public class register extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         namepane = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        name = new javax.swing.JTextField();
+        fullname = new javax.swing.JTextField();
         emailpane = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
-        pass = new javax.swing.JPanel();
+        password = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        pass = new javax.swing.JPasswordField();
         signup = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         already = new javax.swing.JLabel();
@@ -88,14 +90,19 @@ public class register extends javax.swing.JInternalFrame {
 
         jPanel2.add(namepane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 450, 40));
 
-        name.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameActionPerformed(evt);
+        fullname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fullname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        fullname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fullnameMouseClicked(evt);
             }
         });
-        jPanel2.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 370, 40));
+        fullname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fullnameActionPerformed(evt);
+            }
+        });
+        jPanel2.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 370, 40));
 
         emailpane.setBackground(new java.awt.Color(255, 255, 255));
         emailpane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -110,27 +117,30 @@ public class register extends javax.swing.JInternalFrame {
         email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 370, 40));
 
-        pass.setBackground(new java.awt.Color(255, 255, 255));
-        pass.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        password.setBackground(new java.awt.Color(255, 255, 255));
+        password.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Password");
-        pass.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 86, -1));
+        password.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 86, -1));
 
-        jPanel2.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 370, 40));
+        jPanel2.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 370, 40));
 
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                passActionPerformed(evt);
             }
         });
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 370, 40));
+        jPanel2.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 370, 40));
 
         signup.setBackground(new java.awt.Color(255, 153, 102));
         signup.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signupMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 signupMouseEntered(evt);
             }
@@ -193,9 +203,9 @@ public class register extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
 
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_passActionPerformed
 
     private void signupMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupMouseEntered
         signup.setBackground(new Color(255,204,153));
@@ -213,9 +223,25 @@ public class register extends javax.swing.JInternalFrame {
         login.setBackground(new Color(255,153,102));
     }//GEN-LAST:event_loginMouseExited
 
-    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
+    private void fullnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nameActionPerformed
+    }//GEN-LAST:event_fullnameActionPerformed
+
+    private void fullnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fullnameMouseClicked
+       config con = new config();
+       
+       String sql = "INSERT INTO tbl_accounts (name, email , pass ,type ,status)  VALUES (?, ?, ?, ?, ?)";
+       con.addRecord(sql, fullname.getText(), email.getText(), pass.getText(),"Admin","Pending");
+       JOptionPane.showMessageDialog(null, "RECORD ADDED!");
+    }//GEN-LAST:event_fullnameMouseClicked
+
+    private void signupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupMouseClicked
+        config con = new config();
+       
+       String sql = "INSERT INTO tbl_accounts (name, email , pass ,type ,status)  VALUES (?, ?, ?, ?, ?)";
+       con.addRecord(sql, fullname.getText(), email.getText(), pass.getText(),"Admin","Pending");
+       JOptionPane.showMessageDialog(null, "RECORD ADDED!");
+    }//GEN-LAST:event_signupMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -223,6 +249,7 @@ public class register extends javax.swing.JInternalFrame {
     private javax.swing.JLabel already;
     private javax.swing.JTextField email;
     private javax.swing.JPanel emailpane;
+    private javax.swing.JTextField fullname;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -231,11 +258,10 @@ public class register extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPanel login;
-    private javax.swing.JTextField name;
     private javax.swing.JPanel namepane;
-    private javax.swing.JPanel pass;
+    private javax.swing.JPasswordField pass;
+    private javax.swing.JPanel password;
     private javax.swing.JPanel signup;
     private javax.swing.JPanel upper;
     // End of variables declaration//GEN-END:variables
