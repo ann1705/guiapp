@@ -5,6 +5,7 @@
  */
 package internalPages;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JTable;
 
@@ -39,6 +40,10 @@ class config {
     }
 
     static class con {
+
+        static Connection connectDB() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
 
         public con() {
         }

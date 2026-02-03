@@ -35,9 +35,29 @@ public class adminProfile extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        Accid = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
+        type = new javax.swing.JTextField();
+        status = new javax.swing.JTextField();
+
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,14 +66,16 @@ public class adminProfile extends javax.swing.JInternalFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/profile (1).png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 160));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Accid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                AccidActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 490, 50));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 490, 50));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 490, 50));
+        jPanel1.add(Accid, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 490, 30));
+        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 490, 30));
+        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 490, 20));
+        jPanel1.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 490, 30));
+        jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 490, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,16 +91,32 @@ public class adminProfile extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void AccidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_AccidActionPerformed
+
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+                                             
+    // Get the instance of the current session
+    config.Session sess = config.Session.getInstance();
+    
+    // Set the text of your labels using the session data
+    Accid.setText("" + sess.getId());
+    name.setText(sess.getName()); // Or use sess.getName() if you added that field
+    email.setText(sess.getEmail());
+    type.setText(sess.getType());
+    status.setText(sess.getStatus());
+
+    }//GEN-LAST:event_formInternalFrameOpened
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Accid;
+    private javax.swing.JTextField email;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField name;
+    private javax.swing.JTextField status;
+    private javax.swing.JTextField type;
     // End of variables declaration//GEN-END:variables
 }

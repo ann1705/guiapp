@@ -6,6 +6,7 @@
 package internalPages;
 
 import admin.adminDashboard;
+import config.Session;
 import config.config;
 import java.awt.Color;
 import java.sql.Connection;
@@ -34,6 +35,15 @@ public class Signin extends javax.swing.JInternalFrame {
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
     }
+    
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {
+    Session sess = Session.getInstance();
+    
+    // Assuming you have a label named 'user_email'
+    em.setText(sess.getEmail());
+    // Assuming you have a label named 'user_id'
+    
+}
     
     
     private void createDefaultAccount() {
@@ -276,44 +286,52 @@ public class Signin extends javax.swing.JInternalFrame {
 
     private void botlogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botlogMouseClicked
     
+ 
     config con = new config();
-    String query = "SELECT type FROM tbl_accounts WHERE email = ? AND password = ? AND status = ?";
-    
-    String userType = con.authenticate(query, em.getText(), ps.getText(), "ACTIVE");
-    
-    if(userType != null){
-        JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
+    // 1. Get user data from DB
+    // I suggest adding a method in your config class that returns a ResultSet or a specific user object
+    try {
+        Connection conn = con.connectDB();
+        String query = "SELECT * FROM tbl_accounts WHERE email = ? AND password = ? AND status = 'ACTIVE'";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setString(1, em.getText());
+        pstmt.setString(2, ps.getText());
         
-        mainpane.removeAll();
+        java.sql.ResultSet rs = pstmt.executeQuery();
         
-        if(userType.equalsIgnoreCase("SUPERADMIN")) {
-            superadminDashboard sad = new superadminDashboard();
-            mainpane.add(sad).setVisible(true);
+        if(rs.next()){
+            // 2. Initialize the Session with user details
+            Session sess = Session.getInstance();
+             sess.setName(rs.getString("name"));
+            sess.setId(rs.getInt("a_id")); // Ensure column name matches your DB
+            sess.setEmail(rs.getString("email"));
+            sess.setType(rs.getString("type"));
+            sess.setStatus(rs.getString("status"));
+
+            JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
+            String userType = sess.getType();
             
-        } else if(userType.equalsIgnoreCase("ADMIN")) {
-            adminDashboard ad = new adminDashboard();
-            mainpane.add(ad).setVisible(true);
+            mainpane.removeAll();
+            if(userType.equalsIgnoreCase("SUPERADMIN")) {
+                superadminDashboard sad = new superadminDashboard();
+                mainpane.add(sad).setVisible(true);
+            } else if(userType.equalsIgnoreCase("ADMIN")) {
+                adminDashboard ad = new adminDashboard();
+                mainpane.add(ad).setVisible(true);
+            } else if(userType.equalsIgnoreCase("USER")) {
+                userDashboard ud = new userDashboard();
+                mainpane.add(ud).setVisible(true);
+            }
             
-        } else if(userType.equalsIgnoreCase("USER")) {
-            userDashboard ud = new userDashboard();
-            mainpane.add(ud).setVisible(true);
-            
+            mainpane.repaint();
+            mainpane.revalidate();
         } else {
-            JOptionPane.showMessageDialog(null, "Unknown account type!");
+            JOptionPane.showMessageDialog(null, "INVALID CREDENTIALS!");
         }
-        
-        mainpane.repaint();
-        mainpane.revalidate();
-        
-        // Clear fields
-        em.setText("");
-        ps.setText("");
-        
-    } else {
-        JOptionPane.showMessageDialog(null, "INVALID CREDENTIALS!");
-        ps.setText("");
+    } catch (SQLException e) {
+        System.out.println("Login Error: " + e.getMessage());
     }
-  
+
             
     }//GEN-LAST:event_botlogMouseClicked
 

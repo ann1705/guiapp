@@ -5,6 +5,7 @@
  */
 package admin;
 
+import config.Session;
 import internalPages.*;
 import internalPages.userforms;
 import java.awt.Color;
@@ -27,7 +28,13 @@ public class adminDashboard extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
+        
+        
+        
     }
+    
+ 
+    
 
    
     /**
@@ -194,9 +201,9 @@ public class adminDashboard extends javax.swing.JInternalFrame {
         container.setBackground(new java.awt.Color(209, 232, 243));
         container.setLayout(null);
         mainpane.add(container);
-        container.setBounds(0, 0, 830, 410);
+        container.setBounds(0, 0, 830, 380);
 
-        jPanel1.add(mainpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 830, 410));
+        jPanel1.add(mainpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 830, 450));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -16, 1010, 520));
 
